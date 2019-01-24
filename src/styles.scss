@@ -1,0 +1,32 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+/* You can add global styles to this file, and also import other style files */
+
+app-catalogo {
+  height: 100%;
+  position: relative;
+}
+
+.detalle__header-div {
+  background: #9c0019;
+}
+
+.detalle__header-color {
+  color: #ffffff;
+}
+
+.example-table-container{
+  position: relative;
+  max-height: 450px;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-paginator-sticky {
+  bottom: 0px;
+  position: sticky;
+  z-index: 10;
+}

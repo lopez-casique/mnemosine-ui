@@ -1,0 +1,10 @@
+h4 {
+  color: #ffffff;
+}
+
+
+.page-titles .breadcrumb .breadcrumb-item + .breadcrumb-item::before {
+  content: "\e649";
+  color: #a6b7bf;
+  font-size: 11px;
+}

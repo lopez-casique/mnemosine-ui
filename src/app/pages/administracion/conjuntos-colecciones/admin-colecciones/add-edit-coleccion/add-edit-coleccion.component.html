@@ -1,0 +1,33 @@
+<h1 mat-dialog-title>{{ data.type === 'new' ? 'Registrar nuevo colección' : 'Editar colección'}}</h1>
+<div mat-dialog-content>
+  <div class="container">
+    <div class="row">
+      <div class="form-group col-md-12">
+        <label for="conjunto">Conjunto</label>
+        <select class="form-control form-control-sm" id="conjunto">
+          <option value="option">Selecciona un conjunto</option>
+          <option value="option">Opción 1</option>
+          <option value="option">Opción 2</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-12">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" class="form-control form-control-sm">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-grup col-md-12">
+        <label for="descripcion">Descripción</label>
+        <textarea class="form-control form-control-sm" id="descripcion" rows="3"></textarea>
+      </div>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions class="justify-content-between mt-3">
+  <button class="btn rounded btn-outline-dark" (click)="onNoClick()">Cancelar</button>
+  <button class="btn rounded btn-outline-dark"
+          (click)="onNoClick()">{{data.type === 'new' ? 'Registrar' : 'Guardar'}}</button>
+</div>

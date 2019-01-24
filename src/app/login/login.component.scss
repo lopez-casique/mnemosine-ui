@@ -1,0 +1,45 @@
+.wrapper-login {
+  display: grid;
+  background: #455a64;
+  width: 100vw;
+  height: 100vh;
+  color: #ffffff;
+  grid-template-columns: 100vw;
+  grid-template-rows: 95vh 5vh;
+}
+
+.form-wrapper {
+  width: 30vw;
+  justify-self: center;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-login {
+  display: flex;
+  flex-direction: column;
+}
+
+.welcome-message {
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 1rem 0;
+}
+
+.brand_logo {
+  width: 100%;
+  max-width: 8rem;
+  padding-bottom: .5rem;
+  height: auto;
+}
+
+.btn-login {
+  background: #E6FAFC;
+  margin-top: 1.5rem;
+}
+
+.footer-login {
+  align-self: end;
+  justify-self: end;
+}

@@ -1,0 +1,42 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+  <mat-toolbar class="example-toolbar">
+    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+    <img src="assets/brand/logo_franz_mayer.png" alt="" class="brand_logo ml-3" (click)="goHome()">
+    <!--<a routerLink="/inicio" class="go-home">-->
+      <!--<h1 class="example-app-name">Mnemosine</h1>-->
+    <!--</a>-->
+    <span class="example-spacer"></span>
+    <button mat-icon-button [matMenuTriggerFor]="menu"  class="menu-button">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/inicio/administracion">
+        <mat-icon>settings</mat-icon>
+        <span>Administración</span>
+      </button>
+
+      <button mat-menu-item routerLink="/login">
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Cerrar sesión</span>
+      </button>
+    </mat-menu>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-sidenav-container"
+                         [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+                 [fixedInViewport]="mobileQuery.matches" fixedTopGap="56" class="side_nav">
+      <mat-nav-list>
+        <a class="list-item" mat-list-item *ngFor="let nav of fillerNav" [routerLink]="nav.link" [routerLinkActive]="['active-list-item']">{{nav.viewValue}}</a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <div class="main-wrapper">
+        <app-breadcrumb></app-breadcrumb>
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

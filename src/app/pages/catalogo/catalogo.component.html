@@ -1,0 +1,114 @@
+<div class="catalogo__wrapper">
+  <div class="catalogo__grid">
+    <div class="row flex-row-reverse m-0">
+      <button class="btn catalogo__btn-primary m-3" (click)="openModal('new')">Registrar pieza</button>
+    </div>
+    <div class="catalogo__form">
+      <form class="col-md-12">
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label for="conjunto">Conjunto</label>
+            <select class="form-control form-control-sm" id="conjunto">
+              <option value="option">Selecciona un conjunto</option>
+              <option value="option">Opción 1</option>
+              <option value="option">Opción 2</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-2">
+            <label for="num_procedencia">No. Procedencia</label>
+            <input type="text" class="form-control form-control-sm" id="num_procedencia">
+          </div>
+          <div class="form-group col-md-2">
+            <label for="num_inventario">No. Inventario</label>
+            <input type="text" class="form-control form-control-sm" id="num_inventario">
+          </div>
+
+          <div class="form-group col-md-2">
+            <label for="num_catalogo">No. Catálogo</label>
+            <input type="text" class="form-control form-control-sm" id="num_catalogo">
+          </div>
+
+          <div class="form-group col-md-2">
+            <label for="coleccion">Colección</label>
+            <select class="form-control form-control-sm" id="coleccion">
+              <option value="option">Selecciona una colección</option>
+              <option value="option">Opción 1</option>
+              <option value="option">Opción 2</option>
+            </select>
+          </div>
+
+          <div class="form-group col-md-2">
+            <label for="subcoleccion">Subcolección</label>
+            <select class="form-control form-control-sm" id="subcoleccion">
+              <option value="option">Selecciona una subcolección</option>
+              <option value="option">Opción 1</option>
+              <option value="option">Opción 2</option>
+            </select>
+          </div>
+
+          <div class="form-group col-md-2">
+            <label for="tipo_objeto">Tipo de objeto</label>
+            <select class="form-control form-control-sm" id="tipo_objeto">
+              <option value="option">Selecciona un tipo de objeto</option>
+            </select>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="catalogo__grid-container">
+      <div class="example-table-container">
+
+        <table mat-table [dataSource]="dataSource">
+
+          <!-- No. Procedencia Column -->
+          <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef> No. Procedencia</th>
+            <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+          </ng-container>
+
+          <!-- No. Inventario Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> No. Inventario</th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          </ng-container>
+
+          <!-- No. Catalogo Column -->
+          <ng-container matColumnDef="weight">
+            <th mat-header-cell *matHeaderCellDef> No. Catalogo</th>
+            <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+          </ng-container>
+
+          <!-- Tipo de objeto Column -->
+          <ng-container matColumnDef="symbol">
+            <th mat-header-cell *matHeaderCellDef> Tipo de objeto</th>
+            <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+          </ng-container>
+
+          <!-- Opciones de objeto Column -->
+          <ng-container matColumnDef="option">
+            <th mat-header-cell *matHeaderCellDef> Opciones</th>
+            <td mat-cell *matCellDef="let element">
+              <button (click)="openModal('edit')" mat-mini-fab [color]="'success'" matTooltip="Editar pieza">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button (click)="deleteItem()"
+                      mat-mini-fab color="warn"
+                      matTooltip="Eliminar pieza" class="mx-3">
+                <mat-icon>delete_forever</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+      <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons class="mat-paginator-sticky"></mat-paginator>
+    </div>
+    <!--<div class="catalogo__footer">-->
+      <!--<span>Aqui va el footer</span>-->
+    <!--</div>-->
+  </div>
+</div>

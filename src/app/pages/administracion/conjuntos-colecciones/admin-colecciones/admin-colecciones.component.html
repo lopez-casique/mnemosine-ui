@@ -1,0 +1,58 @@
+<div class="container mt-3">
+  <div class="row flex-row-reverse">
+    <button class="btn btn-outline-dark" (click)="openModal('new')">Registrar colección</button>
+  </div>
+
+  <div class="container-fluid mt-3">
+    <div class="row">
+      <div class="form-group col-md-12">
+        <label for="conjunto">Conjunto</label>
+        <select class="form-control form-control-sm" id="conjunto">
+          <option value="option">Selecciona un conjunto</option>
+          <option value="option">Opción 1</option>
+          <option value="option">Opción 2</option>
+        </select>
+      </div>
+    </div>
+    <div class="example-table-container">
+
+      <table mat-table [dataSource]="dataSource">
+
+        <!-- Nombre Column -->
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef>Nombre</th>
+          <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+        </ng-container>
+
+        <!-- Descripcion Column -->
+        <ng-container matColumnDef="descripcion">
+          <th mat-header-cell *matHeaderCellDef>Descripción</th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <!-- Opciones de objeto Column -->
+        <ng-container matColumnDef="option">
+          <th mat-header-cell *matHeaderCellDef> Opciones</th>
+          <td mat-cell *matCellDef="let element">
+            <button class="mx-1" (click)="openModalSubcolecciones()"
+                    mat-mini-fab [color]="'success'" matTooltip="Ver subcolecciones">
+              <mat-icon>format_list_bulleted</mat-icon>
+            </button>
+            <button class="mx-1" (click)="openModal('edit', element)" mat-mini-fab [color]="'success'" matTooltip="Editar colección">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button (click)="deleteItem()"
+                    mat-mini-fab color="warn"
+                    matTooltip="Eliminar colección" class="mx-3">
+              <mat-icon>delete_forever</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+    <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons class="mat-paginator-sticky"></mat-paginator>
+  </div>
+</div>

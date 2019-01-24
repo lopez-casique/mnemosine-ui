@@ -1,0 +1,45 @@
+<h1 mat-dialog-title>Administrar subcolecciones de 'nombre de la colección'</h1>
+<div mat-dialog-content>
+  <div class="row flex-row-reverse mt-3">
+    <button class="btn btn-outline-dark" (click)="openModal('new')">Registrar subcolección</button>
+  </div>
+
+  <div class="container-fluid mt-3">
+    <div class="example-table-container">
+
+      <table mat-table [dataSource]="dataSource">
+
+        <!-- Nombre Column -->
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef>Nombre</th>
+          <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+        </ng-container>
+
+        <!-- Descripcion Column -->
+        <ng-container matColumnDef="descripcion">
+          <th mat-header-cell *matHeaderCellDef>Descripción</th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <!-- Opciones de objeto Column -->
+        <ng-container matColumnDef="option">
+          <th mat-header-cell *matHeaderCellDef> Opciones</th>
+          <td mat-cell *matCellDef="let element">
+            <button class="mx-1" (click)="openModal('edit', element)" mat-mini-fab [color]="'success'" matTooltip="Editar subcolección">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button (click)="deleteItem()"
+                    mat-mini-fab color="warn"
+                    matTooltip="Eliminar subcolección" class="mx-3">
+              <mat-icon>delete_forever</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+    <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons class="mat-paginator-sticky"></mat-paginator>
+  </div>
+</div>

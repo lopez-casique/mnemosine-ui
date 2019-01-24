@@ -1,0 +1,241 @@
+<div class="container-fluid pb-3">
+  <div class="row m-3">
+    <h3>Información de la pieza</h3>
+  </div>
+
+  <div class="row m-0">
+    <div class="col-md-8">
+      <div class="row m-0" style="border: #9c0019 1px solid;">
+
+        <div class="row col-md-12 m-0 detalle__header-div">
+          <span class="detalle__header-color">Datos de identificación</span>
+        </div>
+
+        <div class="row col-md-12 m-0 justify-content-center" style="background: #efefef">
+
+          <div class="col-md-4 flex-column">
+            <p class="font-weight-bold">No. Procedencia</p>
+            <p>XXXX</p>
+          </div>
+          <div class="col-md-4 flex-column">
+            <p class="font-weight-bold">No. Inventario</p>
+            <p>XXXX</p>
+          </div>
+          <div class="col-md-4 flex-column">
+            <p class="font-weight-bold">No. Catálogo</p>
+            <p>XXXX</p>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row mx-0 mt-3">
+        <div class="row col-md-12 m-0 detalle__header-div">
+          <span class="detalle__header-color">Registro de origen</span>
+        </div>
+
+        <div class="row col-md-12 mx-0 flex-column align-items-start">
+          <p class="font-weight-bold">Descripción de origen</p>
+          <p>Aquí va la descripción de origen</p>
+        </div>
+      </div>
+
+      <div class="row mx-0 mt-3">
+        <div class="row col-md-12 m-0 detalle__header-div">
+          <span class="detalle__header-color">Datos actualizados (Departamento de investigación)</span>
+        </div>
+
+        <div class="row col-md-12 m-0">
+
+          <div class="row col-md-12">
+            <div class="col-md-4 form-group">
+              <label class="font-weight-bold" for="genero">Colección</label>
+              <select class="form-control form-control-sm" id="genero">
+                <option value="option">Selecciona una colección</option>
+                <option value="option">Opción 1</option>
+                <option value="option">Opción 2</option>
+              </select>
+            </div>
+            <div class="col-md-4 form-group">
+              <label class="font-weight-bold" for="subgenero">Subgénero</label>
+              <select class="form-control form-control-sm" id="subgenero">
+                <option value="option">Selecciona una subcolección</option>
+                <option value="option">Opción 1</option>
+                <option value="option">Opción 2</option>
+              </select>
+            </div>
+            <div class="col-md-4 form-group">
+              <label class="font-weight-bold" for="tipo_objeto">Tipo de objeto</label>
+              <select class="form-control form-control-sm" id="tipo_objeto">
+                <option value="option">Selecciona un tipo de objeto</option>
+                <option value="option">Selecciona un tipo de objeto</option>
+                <option value="option">Selecciona un tipo de objeto</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row col-md-12">
+            <div class="col-md-4 form-group">
+              <label class="font-weight-bold" for="tecnica">Técnica / materiales</label>
+              <textarea class="form-control form-control-sm" id="tecnica" rows="3"></textarea>
+            </div>
+            <div class="col-md-4 form-group">
+              <label class="font-weight-bold" for="procedencia">Procedencia</label>
+              <select class="form-control form-control-sm" id="procedencia">
+                <option value="option">Selecciona la procedencia</option>
+                <option value="option">Opción 1</option>
+                <option value="option">Opción 2</option>
+              </select>
+            </div>
+            <div class="col-md-4 form-group">
+              <label class="font-weight-bold" for="epoca">Época</label>
+              <select class="form-control form-control-sm" id="epoca">
+                <option value="option">Selecciona una época</option>
+                <option value="option">Selecciona una época</option>
+                <option value="option">Selecciona una época</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row col-md-12">
+            <div class="col-md-4 form-group">
+              <label class="font-weight-bold" for="titulo">Título</label>
+              <textarea class="form-control form-control-sm" id="titulo" rows="3"></textarea>
+            </div>
+            <div class="col-md-4 form-group">
+              <label class="font-weight-bold" for="autor">Autor</label>
+              <select class="form-control form-control-sm" id="autor">
+                <option value="option">Selecciona un autor</option>
+                <option value="option">Opción 1</option>
+                <option value="option">Opción 2</option>
+              </select>
+            </div>
+            <div class="col-md-4 pl-3">
+              <input type="checkbox" class="form-check-input" id="firmas">
+              <label class="font-weight-bold" for="firmas">Firmas o marcas</label>
+            </div>
+          </div>
+
+          <div class="row col-md-12 flex-column">
+            <div class="col form-group">
+              <label class="font-weight-bold" for="desc_firmas">Descrición de firmas o marcas</label>
+              <textarea class="form-control form-control-sm" id="desc_firmas" rows="3"></textarea>
+            </div>
+          </div>
+
+          <div class="row col-md-12">
+            <div class="col-md-4 form-group">
+              <label class="font-weight-bold" for="fecha">Fecha</label>
+              <input type="date" class="form-control form-control-sm" id="fecha">
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row mx-0 mt-3">
+        <div class="row col-md-12 m-0 detalle__header-div">
+          <span class="detalle__header-color">Comentarios sobre la pieza</span>
+        </div>
+
+        <div class="row col-md-12 mx-0 flex-column align-items-start form-group">
+          <label class="font-weight-bold" for="desc_abreviada">Descripción abreviada</label>
+          <textarea class="form-control form-control-sm" id="desc_abreviada" rows="3"></textarea>
+        </div>
+
+        <div class="row col-md-12 mx-0 flex-column align-items-start form-group">
+          <label class="font-weight-bold" for="desc_formal">Descripción formal</label>
+          <textarea class="form-control form-control-sm" id="desc_formal" rows="3"></textarea>
+        </div>
+
+        <div class="row col-md-12 mx-0 flex-column align-items-start form-group">
+          <label class="font-weight-bold" for="observaciones">Observaciones</label>
+          <textarea class="form-control form-control-sm" id="observaciones" rows="3"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <ngb-carousel *ngIf="images">
+        <ng-template ngbSlide>
+          <img [src]="images[0]" alt="Random first slide">
+          <!--<div class="carousel-caption">-->
+          <!--<h3>First slide label</h3>-->
+          <!--<p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>-->
+          <!--</div>-->
+        </ng-template>
+        <ng-template ngbSlide>
+          <img [src]="images[1]" alt="Random second slide">
+          <!--<div class="carousel-caption">-->
+          <!--<h3></h3>-->
+          <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>-->
+          <!--</div>-->
+        </ng-template>
+      </ngb-carousel>
+
+      <div class="row mt-3">
+        <button class="btn btn-block btn-outline-dark">Administrar fotografias</button>
+      </div>
+
+      <div class="row justify-content-between mt-3">
+        <button class="btn btn-outline-dark">Insertar bibliografia</button>
+        <button class="btn btn-outline-dark">Insertar nota a pie de página</button>
+      </div>
+
+      <div class="row mx-0 mt-3">
+        <div class="row col-md-12 m-0 detalle__header-div">
+          <span class="detalle__header-color">Medidas de la pieza</span>
+        </div>
+
+        <div class="row col-md-12 m-0">
+          <div class="row col-md-12">
+            <div class="col-md-3 flex-column">
+              <p class="font-weight-bold">Alto</p>
+              <p>XXXX</p>
+            </div>
+            <div class="col-md-3 flex-column">
+              <p class="font-weight-bold">Ancho</p>
+              <p>XXXX</p>
+            </div>
+            <div class="col-md-3 flex-column">
+              <p class="font-weight-bold">Profundo</p>
+              <p>XXXX</p>
+            </div>
+            <div class="col-md-3 flex-column">
+              <p class="font-weight-bold">Diametro</p>
+              <p>XXXX</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row col-md-12 pl-3">
+          <div class="col-md-6">
+            <input type="checkbox" class="form-check-input" id="datos_revisados">
+            <label class="font-weight-bold" for="datos_revisados">Datos revisados</label>
+          </div>
+
+          <div class="col-md-6 form-group">
+            <label class="font-weight-bold" for="fecha_actualizacion">Última fecha de actualización</label>
+            <input type="date" class="form-control form-control-sm" id="fecha_actualizacion">
+          </div>
+        </div>
+      </div>
+
+      <div class="row mx-0 mt-3">
+        <div class="row col-md-12 m-0 detalle__header-div">
+          <span class="detalle__header-color">Referencias de la pieza</span>
+        </div>
+        <div class="row col-md-12 mx-0 flex-column align-items-start form-group">
+          <label class="font-weight-bold" for="publicaciones">Publicaciones</label>
+          <textarea class="form-control form-control-sm" id="publicaciones" rows="3"></textarea>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="row m-3">
+    <button class="btn btn-block btn-outline-dark">Guardar y continuar</button>
+  </div>
+</div>

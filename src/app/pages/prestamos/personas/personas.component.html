@@ -1,0 +1,60 @@
+<div class="container-fluid">
+  <div class="row flex-row-reverse m-3">
+    <button class="btn btn-outline-dark" (click)="openModal('new')">Registrar persona</button>
+  </div>
+  <div class="row form-group px-5">
+    <label for="nombre">Busqueda</label>
+    <input type="text" id="nombre" class="form-control form-control-sm" placeholder="Buscar en personas"
+           (keyup)="applyFilter($event.target.value)">
+  </div>
+
+  <div class="container-fluid">
+    <div class="example-table-container">
+      <table mat-table [dataSource]="dataSource">
+
+        <!-- Nombre Column -->
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef>Nombre</th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <!-- Organización Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Organización</th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <!-- Dirección Column -->
+        <ng-container matColumnDef="weight">
+          <th mat-header-cell *matHeaderCellDef>Dirección</th>
+          <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+        </ng-container>
+
+        <!-- Teléfono Column -->
+        <ng-container matColumnDef="symbol">
+          <th mat-header-cell *matHeaderCellDef>Teléfono</th>
+          <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+        </ng-container>
+
+        <!-- Opciones de objeto Column -->
+        <ng-container matColumnDef="option">
+          <th mat-header-cell *matHeaderCellDef> Opciones</th>
+          <td mat-cell *matCellDef="let element">
+            <button (click)="openModal('edit', element)" mat-mini-fab [color]="'success'" matTooltip="Editar pieza">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button (click)="deleteItem()"
+                    mat-mini-fab color="warn"
+                    matTooltip="Eliminar subcolección" class="mx-3">
+              <mat-icon>delete_forever</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+    <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons class="mat-paginator-sticky"></mat-paginator>
+  </div>
+</div>
