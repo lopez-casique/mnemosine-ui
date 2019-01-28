@@ -1,33 +1,35 @@
 <h1 mat-dialog-title>{{ data.type === 'new' ? 'Registrar nuevo colección' : 'Editar colección'}}</h1>
 <div mat-dialog-content>
   <div class="container">
-    <div class="row">
-      <div class="form-group col-md-12">
-        <label for="conjunto">Conjunto</label>
-        <select class="form-control form-control-sm" id="conjunto">
-          <option value="option">Selecciona un conjunto</option>
-          <option value="option">Opción 1</option>
-          <option value="option">Opción 2</option>
-        </select>
+    <form [formGroup]="form">
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label for="conjunto">Conjunto</label>
+          <select class="form-control form-control-sm" id="conjunto" formControlName="idSet">
+            <option [value]="set.idSet" *ngFor="let set of sets">{{set.title}}</option>
+          </select>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="form-group col-md-12">
-        <label for="nombre">Nombre</label>
-        <input type="text" id="nombre" class="form-control form-control-sm">
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" class="form-control form-control-sm"
+                 formControlName="name">
+        </div>
       </div>
-    </div>
 
-    <div class="row">
-      <div class="form-grup col-md-12">
-        <label for="descripcion">Descripción</label>
-        <textarea class="form-control form-control-sm" id="descripcion" rows="3"></textarea>
+      <div class="row">
+        <div class="form-grup col-md-12">
+          <label for="descripcion">Descripción</label>
+          <textarea class="form-control form-control-sm" id="descripcion" rows="3"
+                    formControlName="description"></textarea>
+        </div>
       </div>
-    </div>
+    </form>
   </div>
 </div>
 <div mat-dialog-actions class="justify-content-between mt-3">
   <button class="btn rounded btn-outline-dark" (click)="onNoClick()">Cancelar</button>
   <button class="btn rounded btn-outline-dark"
-          (click)="onNoClick()">{{data.type === 'new' ? 'Registrar' : 'Guardar'}}</button>
+          (click)="save()">{{data.type === 'new' ? 'Registrar' : 'Guardar'}}</button>
 </div>

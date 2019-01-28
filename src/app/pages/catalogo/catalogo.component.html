@@ -4,38 +4,39 @@
       <button class="btn catalogo__btn-primary m-3" (click)="openModal('new')">Registrar pieza</button>
     </div>
     <div class="catalogo__form">
-      <form class="col-md-12">
+      <form class="col-md-12" [formGroup]="form">
         <div class="row">
           <div class="form-group col-md-12">
             <label for="conjunto">Conjunto</label>
-            <select class="form-control form-control-sm" id="conjunto">
-              <option value="option">Selecciona un conjunto</option>
-              <option value="option">Opción 1</option>
-              <option value="option">Opción 2</option>
+            <select class="form-control form-control-sm" id="conjunto" formControlName="idSet">
+              <option *ngFor="let set of sets" [value]="set.idSet">{{set.title}}</option>
             </select>
           </div>
         </div>
         <div class="row">
           <div class="form-group col-md-2">
             <label for="num_procedencia">No. Procedencia</label>
-            <input type="text" class="form-control form-control-sm" id="num_procedencia">
+            <input type="text" class="form-control form-control-sm" id="num_procedencia"
+                   formControlName="origin_number">
           </div>
           <div class="form-group col-md-2">
             <label for="num_inventario">No. Inventario</label>
-            <input type="text" class="form-control form-control-sm" id="num_inventario">
+            <input type="text" class="form-control form-control-sm" id="num_inventario"
+                   formControlName="inventory_number">
           </div>
 
           <div class="form-group col-md-2">
             <label for="num_catalogo">No. Catálogo</label>
-            <input type="text" class="form-control form-control-sm" id="num_catalogo">
+            <input type="text" class="form-control form-control-sm" id="num_catalogo"
+                   formControlName="catalog_number">
           </div>
 
           <div class="form-group col-md-2">
             <label for="coleccion">Colección</label>
-            <select class="form-control form-control-sm" id="coleccion">
-              <option value="option">Selecciona una colección</option>
-              <option value="option">Opción 1</option>
-              <option value="option">Opción 2</option>
+            <select class="form-control form-control-sm" id="coleccion" formControlName="idCollection">
+              <option *ngFor="let collection of collections" [value]="collection.idCollection">
+                {{collection.name}}
+              </option>
             </select>
           </div>
 
@@ -55,6 +56,10 @@
             </select>
           </div>
         </div>
+        <div class="row mx-0 px-0 justify-content-between">
+          <button class="btn btn-outline-dark" (click)="form.reset()">Reiniciar</button>
+          <button class="btn btn-outline-dark">Buscar</button>
+        </div>
       </form>
     </div>
     <div class="catalogo__grid-container">
@@ -65,19 +70,20 @@
           <!-- No. Procedencia Column -->
           <ng-container matColumnDef="position">
             <th mat-header-cell *matHeaderCellDef> No. Procedencia</th>
-            <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.origin_number}} </td>
           </ng-container>
 
+          <!-- TODO: Cambiar el atributo de la etiqueta td cuando se corrija la migración  -->
           <!-- No. Inventario Column -->
           <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef> No. Inventario</th>
-            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.origin_number}} </td>
           </ng-container>
 
           <!-- No. Catalogo Column -->
           <ng-container matColumnDef="weight">
             <th mat-header-cell *matHeaderCellDef> No. Catalogo</th>
-            <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.catalog_number}} </td>
           </ng-container>
 
           <!-- Tipo de objeto Column -->
@@ -90,7 +96,7 @@
           <ng-container matColumnDef="option">
             <th mat-header-cell *matHeaderCellDef> Opciones</th>
             <td mat-cell *matCellDef="let element">
-              <button (click)="openModal('edit')" mat-mini-fab [color]="'success'" matTooltip="Editar pieza">
+              <button (click)="openModal('edit', element)" mat-mini-fab [color]="'success'" matTooltip="Editar pieza">
                 <mat-icon>edit</mat-icon>
               </button>
               <button (click)="deleteItem()"
@@ -108,7 +114,7 @@
       <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons class="mat-paginator-sticky"></mat-paginator>
     </div>
     <!--<div class="catalogo__footer">-->
-      <!--<span>Aqui va el footer</span>-->
+    <!--<span>Aqui va el footer</span>-->
     <!--</div>-->
   </div>
 </div>

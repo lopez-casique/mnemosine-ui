@@ -1,122 +1,145 @@
 <h1 mat-dialog-title>{{ data.type === 'new' ? 'Registrar nueva pieza' : 'Editar pieza'}}</h1>
 <div mat-dialog-content>
-  <div class="row flex-row-reverse mx-0">
-    <div class="form-group col-md-4">
-      <label for="fecha_ingreso">Fecha de ingreso</label>
-      <input type="date" id="fecha_ingreso" class="form-control form-control-sm" [value]="dateNow">
-    </div>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="form-group col-md-12">
-        <label for="conjunto">Conjunto</label>
-        <select class="form-control form-control-sm" id="conjunto">
-          <option value="option">Selecciona un conjunto</option>
-          <option value="option">Opción 1</option>
-          <option value="option">Opción 2</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="row">
+  <form [formGroup]="form">
+    <div class="row flex-row-reverse mx-0">
       <div class="form-group col-md-4">
-        <label for="num_procedencia">No. Procedencia</label>
-        <input type="text" id="num_procedencia" class="form-control form-control-sm">
-      </div>
-
-      <div class="form-group col-md-4">
-        <label for="num_inventario">No. Inventario</label>
-        <input type="text" id="num_inventario" class="form-control form-control-sm">
-      </div>
-
-      <div class="form-group col-md-4">
-        <label for="num_catalogo">No. Catálogo</label>
-        <input type="text" id="num_catalogo" class="form-control form-control-sm">
+        <label for="fecha_ingreso">Fecha de ingreso</label>
+        <input type="date" id="fecha_ingreso" class="form-control form-control-sm"
+               formControlName="date_of_entry">
       </div>
     </div>
 
-    <div class="row">
-      <div class="form-group col-md-4">
-        <label for="genero">Colección</label>
-        <select class="form-control form-control-sm" id="genero">
-          <option value="option">Selecciona un género</option>
-          <option value="option">Selecciona un género</option>
-          <option value="option">Selecciona un género</option>
-        </select>
-      </div>
+    <mat-tab-group>
+      <mat-tab label="Datos generales">
+        <div class="container">
+          <div class="row">
+            <div class="form-group col-md-12">
+              <label for="conjunto">Conjunto</label>
+              <select class="form-control form-control-sm" id="conjunto" formControlName="idSet">
+                <option *ngFor="let set of sets" [value]="set.idSet">{{set.title}}</option>
+              </select>
+            </div>
+          </div>
 
-      <div class="form-group col-md-4">
-        <label for="subgenero">Subcolección</label>
-        <select class="form-control form-control-sm" id="subgenero">
-          <option value="option">Selecciona un subgénero</option>
-          <option value="option">Selecciona un subgénero</option>
-          <option value="option">Selecciona un subgénero</option>
-        </select>
-      </div>
+          <div class="row">
+            <div class="form-group col-md-4">
+              <label for="num_procedencia">No. Procedencia</label>
+              <input type="text" id="num_procedencia" class="form-control form-control-sm"
+                     formControlName="origin_number">
+            </div>
 
-      <div class="form-group col-md-4">
-        <label for="tipo_objeto">Tipo de objeto</label>
-        <select class="form-control form-control-sm" id="tipo_objeto">
-          <option value="option">Selecciona un tipo de objeto</option>
-          <option value="option">Selecciona un tipo de objeto</option>
-          <option value="option">Selecciona un tipo de objeto</option>
-        </select>
-      </div>
-    </div>
+            <div class="form-group col-md-4">
+              <label for="num_inventario">No. Inventario</label>
+              <input type="text" id="num_inventario" class="form-control form-control-sm"
+                     formControlName="inventory_number">
+            </div>
 
-    <div class="row">
-      <div class="form-group col-md-8">
-        <label for="ubicación">Ubicación</label>
-        <select class="form-control form-control-sm" id="ubicación">
-          <option value="option">Selecciona una ubicación</option>
-          <option value="option">Selecciona una ubicación</option>
-          <option value="option">Selecciona una ubicación</option>
-        </select>
-      </div>
+            <div class="form-group col-md-4">
+              <label for="num_catalogo">No. Catálogo</label>
+              <input type="text" id="num_catalogo" class="form-control form-control-sm"
+                     formControlName="catalog_number">
+            </div>
+          </div>
 
-      <div class="form-group col-md-4">
-        <label for="avaluo">Avalúo</label>
-        <input type="text" id="avaluo" class="form-control form-control-sm">
-      </div>
-    </div>
+          <div class="row">
+            <div class="form-group col-md-4">
+              <label for="coleccion">Colección</label>
+              <select class="form-control form-control-sm" id="coleccion" formControlName="collection_idCollection">
+                <option *ngFor="let collection of collections" [value]="collection.idCollection">
+                  {{collection.name}}
+                </option>
+              </select>
+            </div>
 
-    <div class="row">
-      <div class="form-grup col-md-12">
-        <label for="descripcion">Descripción</label>
-        <textarea class="form-control form-control-sm" id="descripcion" rows="3"></textarea>
-      </div>
-    </div>
-  </div>
+            <div class="form-group col-md-4">
+              <label for="subgenero">Subcolección</label>
+              <select class="form-control form-control-sm" id="subgenero"
+                      formControlName="subCollection_idSubCollection">
+                <option value="option">Selecciona un subgénero</option>
+                <option value="option">Selecciona un subgénero</option>
+                <option value="option">Selecciona un subgénero</option>
+              </select>
+            </div>
 
-  <div class="container mt-3">
-    <div class="row" style="background: #9c0019">
-      <span style="color: #ffffff" class="mx-3">Medidas de la obra (cm)</span>
-    </div>
+            <div class="form-group col-md-4">
+              <label for="tipo_objeto">Tipo de objeto</label>
+              <select class="form-control form-control-sm" id="tipo_objeto"
+                      formControlName="type">
+                <option value="option">Selecciona un tipo de objeto</option>
+                <option value="option">Selecciona un tipo de objeto</option>
+                <option value="option">Selecciona un tipo de objeto</option>
+              </select>
+            </div>
+          </div>
 
-    <div class="row mt-3">
-      <div class="form-group col-md-3">
-        <label for="alto">Alto</label>
-        <input type="text" id="alto" class="form-control form-control-sm">
-      </div>
+          <div class="row">
+            <div class="form-group col-md-8">
+              <label for="ubicación">Ubicación</label>
+              <select class="form-control form-control-sm" id="ubicación"
+                      formControlName="location">
+                <option value="option">Selecciona una ubicación</option>
+                <option value="option">Selecciona una ubicación</option>
+                <option value="option">Selecciona una ubicación</option>
+              </select>
+            </div>
 
-      <div class="form-group col-md-3">
-        <label for="ancho">Ancho</label>
-        <input type="text" id="ancho" class="form-control form-control-sm">
-      </div>
+            <div class="form-group col-md-4">
+              <label for="avaluo">Avalúo</label>
+              <input type="text" id="avaluo" class="form-control form-control-sm"
+                     formControlName="appraisal">
+            </div>
+          </div>
 
-      <div class="form-group col-md-3">
-        <label for="profundo">Profundo</label>
-        <input type="text" id="profundo" class="form-control form-control-sm">
-      </div>
+          <div class="row">
+            <div class="form-grup col-md-12">
+              <label for="descripcion">Descripción</label>
+              <textarea class="form-control form-control-sm" id="descripcion" rows="3"
+                        formControlName="origin_description"></textarea>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Medidas">
+        <div class="container m-3">
+          <div class="row" style="background: #9c0019">
+            <span style="color: #ffffff">Medidas de la obra (cm)</span>
+          </div>
 
-      <div class="form-group col-md-3">
-        <label for="diametro">Diametro</label>
-        <input type="text" id="diametro" class="form-control form-control-sm">
-      </div>
-    </div>
-  </div>
+          <div class="row mt-3">
+            <div class="form-group col-md-3">
+              <label for="alto">Alto</label>
+              <input type="text" id="alto" class="form-control form-control-sm">
+            </div>
+
+            <div class="form-group col-md-3">
+              <label for="ancho">Ancho</label>
+              <input type="text" id="ancho" class="form-control form-control-sm">
+            </div>
+
+            <div class="form-group col-md-3">
+              <label for="profundo">Profundo</label>
+              <input type="text" id="profundo" class="form-control form-control-sm">
+            </div>
+
+            <div class="form-group col-md-3">
+              <label for="diametro">Diametro</label>
+              <input type="text" id="diametro" class="form-control form-control-sm">
+            </div>
+          </div>
+
+          <div class="row mt-3 p-0 mx-0">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">¿La pieza tiene marco o base?</label>
+          </div>
+        </div>
+      </mat-tab>
+      <!--<mat-tab label="Third"> Content 3 </mat-tab>-->
+    </mat-tab-group>
+
+  </form>
 </div>
 <div mat-dialog-actions class="justify-content-between">
   <button class="btn rounded btn-outline-dark" (click)="onNoClick()">Cancelar</button>
-  <button class="btn rounded btn-outline-dark" (click)="onNoClick()">{{data.type === 'new' ? 'Registrar' : 'Guardar'}}</button>
+  <button class="btn rounded btn-outline-dark"
+          (click)="save()">{{data.type === 'new' ? 'Registrar' : 'Guardar'}}</button>
 </div>

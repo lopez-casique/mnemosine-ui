@@ -1,23 +1,26 @@
 <h1 mat-dialog-title>{{ data.type === 'new' ? 'Registrar nuevo conjunto' : 'Editar conjunto'}}</h1>
 <div mat-dialog-content>
   <div class="container">
-    <div class="row">
-      <div class="form-group col-md-12">
-        <label for="nombre">Nombre</label>
-        <input type="text" id="nombre" class="form-control form-control-sm">
+    <form [formGroup]="form">
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" class="form-control form-control-sm" formControlName="title">
+        </div>
       </div>
-    </div>
 
-    <div class="row">
-      <div class="form-grup col-md-12">
-        <label for="descripcion">Descripción</label>
-        <textarea class="form-control form-control-sm" id="descripcion" rows="3"></textarea>
+      <div class="row">
+        <div class="form-grup col-md-12">
+          <label for="descripcion">Descripción</label>
+          <textarea class="form-control form-control-sm" id="descripcion" rows="3"
+                    formControlName="description"></textarea>
+        </div>
       </div>
-    </div>
+    </form>
   </div>
 </div>
 <div mat-dialog-actions class="justify-content-between mt-3">
   <button class="btn rounded btn-outline-dark" (click)="onNoClick()">Cancelar</button>
   <button class="btn rounded btn-outline-dark"
-          (click)="onNoClick()">{{data.type === 'new' ? 'Registrar' : 'Guardar'}}</button>
+          (click)="save()">{{data.type === 'new' ? 'Registrar' : 'Guardar'}}</button>
 </div>

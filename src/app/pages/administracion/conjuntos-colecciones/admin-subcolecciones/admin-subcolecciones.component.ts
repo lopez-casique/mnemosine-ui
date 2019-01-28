@@ -18,9 +18,10 @@ export class AdminSubcoleccionesComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<AdminSubcoleccionesComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
-              public dialog: MatDialog,) { }
+              public dialog: MatDialog) { }
 
   ngOnInit() {
+    console.log(this.data);
     this.loadData();
     this.dataSource.paginator = this.paginator;
   }

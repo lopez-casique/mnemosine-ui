@@ -2,6 +2,12 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatDialog, MatPaginator, MatTableDataSource} from '@angular/material';
 import {AddEditPiezaCatalogoComponent} from './add-edit-pieza-catalogo/add-edit-pieza-catalogo.component';
 import {AlertDeletePiezaComponent} from './alert-delete-pieza/alert-delete-pieza.component';
+import {SetsService} from '../../services/sets/sets.service';
+import {CollectionsService} from '../../services/collections/collections.service';
+import {ObjectsService} from '../../services/objects/objects.service';
+import {forkJoin} from 'rxjs';
+import {FormControl, FormGroup} from '@angular/forms';
+import {ObjectMuseum} from '../../classes/object';
 
 @Component({
   selector: 'app-catalogo',
@@ -9,23 +15,55 @@ import {AlertDeletePiezaComponent} from './alert-delete-pieza/alert-delete-pieza
   styleUrls: ['./catalogo.component.scss']
 })
 export class CatalogoComponent implements OnInit {
+  form: FormGroup;
+  sets = [];
+  collections = [];
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'option'];
-  dataSource: MatTableDataSource<PeriodicElement>;
+  dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog,
+              public _setService: SetsService,
+              public _collectionService: CollectionsService,
+              public _objectService: ObjectsService) {
   }
 
   ngOnInit() {
-
+    this.initFormGroup();
+    const setRequest = this._setService.listSets();
+    const collectionRequest = this._collectionService.listCollections();
+    forkJoin(setRequest, collectionRequest)
+      .subscribe(
+        res => {
+          this.sets = res[0];
+          this.collections = res[1];
+          console.log(res);
+        }
+      );
     this.loadData();
-    this.dataSource.paginator = this.paginator;
   }
 
   loadData() {
-    this.dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+    this._objectService.listObjects()
+      .subscribe(
+        (objects: Array<ObjectMuseum>) => {
+          console.log(objects);
+          this.dataSource = new MatTableDataSource<any>(objects);
+          this.dataSource.paginator = this.paginator;
+        }
+      );
+  }
+
+  initFormGroup() {
+    this.form = new FormGroup({
+      'idSet': new FormControl(1),
+      'origin_number': new FormControl(null),
+      'inventory_number': new FormControl(null),
+      'catalog_number': new FormControl(null),
+      'idCollection': new FormControl(null),
+    });
   }
 
   openModal(type, info?) {

@@ -44,6 +44,10 @@ import { AddEditSubcoleccionesComponent } from './administracion/conjuntos-colec
 import { AddEditOrganizacionComponent } from './prestamos/organizaciones/add-edit-organizacion/add-edit-organizacion.component';
 import { AddEditPersonaComponent } from './prestamos/personas/add-edit-persona/add-edit-persona.component';
 import { AddEditExposicionComponent } from './prestamos/exposiciones/add-edit-exposicion/add-edit-exposicion.component';
+import {ImageViewerComponent} from '../components/image-viewer/image-viewer.component';
+import {ImageViewerModule} from 'ng2-image-viewer';
+import {ServicesModule} from '../services/services.module';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -88,12 +92,16 @@ import { AddEditExposicionComponent } from './prestamos/exposiciones/add-edit-ex
   imports: [
     CommonModule,
     RouterModule,
+    ReactiveFormsModule,
+    FormsModule,
     AppRoutingModule,
     PAGES_ROUTES,
     MaterialModule,
+    ServicesModule,
     ComponentsModule,
     NgbCarouselModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    ImageViewerModule,
   ],
   entryComponents: [
     AddEditPiezaCatalogoComponent,
@@ -104,7 +112,8 @@ import { AddEditExposicionComponent } from './prestamos/exposiciones/add-edit-ex
     AddEditSubcoleccionesComponent,
     AddEditOrganizacionComponent,
     AddEditPersonaComponent,
-    AddEditExposicionComponent
+    AddEditExposicionComponent,
+    ImageViewerComponent
   ]
 })
 export class PagesModule {

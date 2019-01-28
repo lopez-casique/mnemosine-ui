@@ -5,6 +5,10 @@ import {AddEditConjuntoComponent} from '../admin-conjuntos/add-edit-conjunto/add
 import {AlertDeletePiezaComponent} from '../../../catalogo/alert-delete-pieza/alert-delete-pieza.component';
 import {AddEditColeccionComponent} from './add-edit-coleccion/add-edit-coleccion.component';
 import {AdminSubcoleccionesComponent} from '../admin-subcolecciones/admin-subcolecciones.component';
+import {SetsService} from '../../../../services/sets/sets.service';
+import {FormControl, FormGroup} from '@angular/forms';
+import {CollectionsService} from '../../../../services/collections/collections.service';
+import {Collection} from '../../../../classes/collection';
 
 @Component({
   selector: 'app-admin-colecciones',
@@ -12,23 +16,52 @@ import {AdminSubcoleccionesComponent} from '../admin-subcolecciones/admin-subcol
   styleUrls: ['./admin-colecciones.component.scss']
 })
 export class AdminColeccionesComponent implements OnInit {
+  form = new FormGroup({
+    'idSet': new FormControl()
+  });
+  setId = '';
+  sets;
 
   displayedColumns: string[] = ['nombre', 'descripcion', 'option'];
-  dataSource: MatTableDataSource<PeriodicElement>;
+  dataSource: MatTableDataSource<Collection>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(public dialog: MatDialog, public router: Router) {
+  constructor(public dialog: MatDialog, public router: Router,
+              public _setsService: SetsService,
+              public _collectionService: CollectionsService) {
   }
 
   ngOnInit() {
-
+    // this.form.get('idSet').valueChanges.subscribe(
+    //   res => {
+    //     this._setsService.getSet(res)
+    //       .subscribe(
+    //         set => {
+    //           console.log(set);
+    //         }
+    //       );
+    //   }
+    // );
+    this._setsService.listSets()
+      .subscribe(
+        sets => {
+          console.log(sets);
+          this.sets = sets;
+        }
+      );
     this.loadData();
-    this.dataSource.paginator = this.paginator;
   }
 
   loadData() {
-    this.dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+    this._collectionService.listCollections()
+      .subscribe(
+        (collections: Array<Collection>) => {
+          console.log(collections);
+          this.dataSource = new MatTableDataSource<Collection>(collections);
+          this.dataSource.paginator = this.paginator;
+        }
+      );
   }
 
   openModal(type, info?) {
@@ -57,13 +90,13 @@ export class AdminColeccionesComponent implements OnInit {
     });
   }
 
-  openModalSubcolecciones() {
+  openModalSubcolecciones(coleccion) {
     const dialogRef = this.dialog.open(AdminSubcoleccionesComponent, {
-        width: '40vw',
-        data: {
-          type: 'new'
-        }
-      });
+      width: '50vw',
+      data: {
+        info: coleccion
+      }
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === 1) {

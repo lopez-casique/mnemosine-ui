@@ -29,20 +29,21 @@
 
 .catalogo__grid-container {
   position: relative;
+  margin-top: 1rem;
 }
 
 .catalogo__btn-primary {
-  background-color:#a6b7bf;
+  background-color: #a6b7bf;
+  border-radius: 28px;
   -moz-border-radius:28px;
   -webkit-border-radius:28px;
-  border-radius:28px;
-  border:1px solid #455a64;
-  display:inline-block;
-  cursor:pointer;
+  border: 1px solid #455a64;
+  display: inline-block;
+  cursor: pointer;
   color: #ffffff;
-  font-size:17px;
-  padding:16px 31px;
-  text-decoration:none;
+  font-size: 1rem;
+  padding: 10px 20px;
+  text-decoration: none;
 }
 
 .catalogo__btn-primary:hover {

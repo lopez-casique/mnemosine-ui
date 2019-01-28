@@ -4,6 +4,8 @@ import {Router} from '@angular/router';
 import {AddEditPiezaCatalogoComponent} from '../../../catalogo/add-edit-pieza-catalogo/add-edit-pieza-catalogo.component';
 import {AlertDeletePiezaComponent} from '../../../catalogo/alert-delete-pieza/alert-delete-pieza.component';
 import {AddEditConjuntoComponent} from './add-edit-conjunto/add-edit-conjunto.component';
+import {SetsService} from '../../../../services/sets/sets.service';
+import {SetMuseum} from '../../../../classes/set';
 
 @Component({
   selector: 'app-admin-conjuntos',
@@ -13,21 +15,27 @@ import {AddEditConjuntoComponent} from './add-edit-conjunto/add-edit-conjunto.co
 export class AdminConjuntosComponent implements OnInit {
 
   displayedColumns: string[] = ['nombre', 'descripcion', 'option'];
-  dataSource: MatTableDataSource<PeriodicElement>;
+  dataSource: MatTableDataSource<SetMuseum>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(public dialog: MatDialog, public router: Router) {
+  constructor(public dialog: MatDialog, public router: Router,
+              public _setsService: SetsService) {
   }
 
   ngOnInit() {
-
     this.loadData();
-    this.dataSource.paginator = this.paginator;
   }
 
   loadData() {
-    this.dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+    this._setsService.listSets()
+      .subscribe(
+        (sets: Array<SetMuseum>) => {
+          console.log(sets);
+          this.dataSource = new MatTableDataSource<SetMuseum>(sets);
+          this.dataSource.paginator = this.paginator;
+        }
+      );
   }
 
   openModal(type, info?) {

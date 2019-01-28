@@ -8,6 +8,8 @@ import { LoginComponent } from './login/login.component';
 import {APP_ROUTING} from './app.routes';
 import {RouterModule} from '@angular/router';
 import {MaterialModule} from './material/material.module';
+import {ImageViewerModule} from 'ng2-image-viewer';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,10 +19,12 @@ import {MaterialModule} from './material/material.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     // APP_ROUTING,
     PagesModule,
     RouterModule,
-    MaterialModule
+    MaterialModule,
+    ImageViewerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

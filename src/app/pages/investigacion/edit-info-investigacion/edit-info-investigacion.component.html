@@ -2,6 +2,19 @@
   <div class="row m-3">
     <h3>Información de la pieza</h3>
   </div>
+  <div class="row justify-content-center">
+    <app-image-viewer
+      class="col-md-6"
+      [images]="images"
+      [idContainer]="'idOnHTML'"
+      [loadOnInit]="true"
+      [download]="false"
+      [primaryColor]="'#455a64'"
+      [buttonsColor]="'#ffffff'"
+      [showOptions]="true"
+      [enableTooltip]="true">
+    </app-image-viewer>
+  </div>
 
   <div class="row m-0">
     <div class="col-md-8">
@@ -156,22 +169,17 @@
     </div>
 
     <div class="col-md-4">
-      <ngb-carousel *ngIf="images">
-        <ng-template ngbSlide>
-          <img [src]="images[0]" alt="Random first slide">
-          <!--<div class="carousel-caption">-->
-          <!--<h3>First slide label</h3>-->
-          <!--<p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>-->
-          <!--</div>-->
-        </ng-template>
-        <ng-template ngbSlide>
-          <img [src]="images[1]" alt="Random second slide">
-          <!--<div class="carousel-caption">-->
-          <!--<h3></h3>-->
-          <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>-->
-          <!--</div>-->
-        </ng-template>
-      </ngb-carousel>
+      <!--<app-image-viewer-->
+        <!--[images]="images"-->
+        <!--[idContainer]="'idOnHTML'"-->
+        <!--[loadOnInit]="true"-->
+        <!--[download]="false"-->
+        <!--[primaryColor]="'#455a64'"-->
+        <!--[buttonsColor]="'#ffffff'"-->
+        <!--[showOptions]="true"-->
+        <!--[enableTooltip]="true"-->
+      <!--&gt;-->
+      <!--</app-image-viewer>-->
 
       <div class="row mt-3">
         <button class="btn btn-block btn-outline-dark">Administrar fotografias</button>
