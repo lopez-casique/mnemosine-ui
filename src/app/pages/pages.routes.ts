@@ -36,43 +36,66 @@ const pagesRoutes: Routes = [
       {
         path: 'inicio',
         component: HomeComponent,
-        data: {title: 'Inicio'},
+        data: {
+          title: 'Inicio'
+        },
         children: [
           {
             path: 'consulta', component: ConsultaComponent,
             data: {
-              title: 'Consulta', subtitle: '/ Busqueda'
+              title: 'Consulta',
+              subtitle: '/ Busqueda',
+              icon: 'list'
             },
             children: [
               {
                 path: 'busqueda', component: BusquedaConsultaComponent,
                 data: {
-                  title: 'Consulta', subtitle: '/ Busqueda'
+                  title: 'Consulta', subtitle: '/ Busqueda',
+                  icon: 'list'
                 }
               },
               {
                 path: 'resultado', component: ResultadoBusquedaComponent,
                 data: {
-                  title: 'Consulta', subtitle: '/ Resultado busqueda'
+                  title: 'Consulta', subtitle: '/ Resultado busqueda',
+                  icon: 'list'
                 }
               },
               {
                 path: 'detalle', component: DetalleConsultaComponent,
                 data: {
-                  title: 'Consulta', subtitle: '/ Detalle pieza'
+                  title: 'Consulta', subtitle: '/ Detalle pieza',
+                  icon: 'list'
                 }
               },
               {path: '', redirectTo: 'busqueda', pathMatch: 'full'}
             ]
           },
-          {path: 'catalogo', component: CatalogoComponent, data: {title: 'Catálogo', subtitle: '/ Busqueda',}},
+          {path: 'catalogo', component: CatalogoComponent, data: {title: 'Catálogo', subtitle: '/ Busqueda', icon: 'library_add'}},
           {
-            path: 'prestamos', component: PrestamosComponent, data: {title: 'Prestamos', subtitle: ''},
+            path: 'prestamos', component: PrestamosComponent, data: {title: 'Prestamos', subtitle: '', icon: 'departure_board'},
             children: [
-              {path: 'personas', component: PersonasComponent, data: {title: 'Prestamos', subtitle: '/ Personas'}},
-              {path: 'organizaciones', component: OrganizacionesComponent, data: {title: 'Prestamos', subtitle: '/ Organizaciones'}},
-              {path: 'exposiciones', component: ExposicionesComponent, data: {title: 'Prestamos', subtitle: '/ Exposiciones'}},
-              {path: 'movimientos', component: MovimientosComponent, data: {title: 'Prestamos', subtitle: '/ Movimientos'}},
+              {
+                path: 'personas', component: PersonasComponent,
+                data: {title: 'Prestamos', subtitle: '/ Personas', icon: 'departure_board'}
+              },
+              {
+                path: 'organizaciones', component: OrganizacionesComponent, data: {
+                  title: 'Prestamos', subtitle: '/ departure_board',
+                  icon: 'departure_board'
+                }
+              },
+              {
+                path: 'exposiciones',
+                component: ExposicionesComponent,
+                data: {title: 'Prestamos', subtitle: '/ Exposiciones', icon: 'departure_board'}
+              },
+              {
+                path: 'movimientos',
+                component: MovimientosComponent,
+                data: {title: 'Prestamos', subtitle: '/ Movimientos',  icon: 'departure_board'}
+              },
               {path: '**', redirectTo: 'organizaciones', pathMatch: 'full'}
             ]
           },
@@ -82,25 +105,28 @@ const pagesRoutes: Routes = [
               {
                 path: 'busqueda', component: BusquedaInvestigacionComponent,
                 data: {
-                  title: 'Investigación', subtitle: '/ Busqueda'
+                  title: 'Investigación', subtitle: '/ Busqueda',
+                  icon: 'search'
                 }
               },
               {
                 path: 'resultado', component: ResultadoBusquedaInvestigacionComponent,
                 data: {
-                  title: 'Investigación', subtitle: '/ Resultado busqueda'
+                  title: 'Investigación', subtitle: '/ Resultado busqueda',
+                  icon: 'search'
                 }
               },
               {
                 path: 'editar', component: EditInfoInvestigacionComponent,
                 data: {
-                  title: 'Investigación', subtitle: '/ Editar información'
+                  title: 'Investigación', subtitle: '/ Editar información',
+                  icon: 'search'
                 }
               },
               {path: '', redirectTo: 'busqueda', pathMatch: 'full'}
             ]
           },
-          {path: 'restauracion', component: RestauracionComponent, data: {title: 'Restauración', subtitle: ''}},
+          {path: 'restauracion', component: RestauracionComponent, data: {title: 'Restauración', subtitle: '', icon: 'autorenew'}},
           {
             path: 'administracion', component: AdministracionComponent, data: {title: 'Administración', subtitle: ''},
             children: [
@@ -112,28 +138,29 @@ const pagesRoutes: Routes = [
                   {
                     path: 'admin-conjuntos',
                     component: AdminConjuntosComponent,
-                    data: {title: 'Administración', subtitle: '/ Conjuntos y colecciones / Administrar conjuntos'}
+                    data: {title: 'Administración', subtitle: '/ Conjuntos y colecciones / Administrar conjuntos', icon: 'settings'}
                   },
                   {
                     path: 'admin-colecciones',
                     component: AdminColeccionesComponent,
-                    data: {title: 'Administración', subtitle: '/ Conjuntos y colecciones / Administrar colecciones'}
+                    data: {title: 'Administración', subtitle: '/ Conjuntos y colecciones / Administrar colecciones', icon: 'settings'}
                   },
                   {path: '**', redirectTo: 'admin-conjuntos', pathMatch: 'full'}
                 ]
               },
-              {path: 'reportes', component: ReportesComponent, data: {title: 'Administración', subtitle: '/ Reportes'}},
-              {path: 'usuarios', component: UsuariosComponent, data: {title: 'Administración', subtitle: '/ Usuarios'}},
-              {path: 'historicos', component: HistoricosComponent, data: {title: 'Administración', subtitle: '/ Historicos'}},
-              {path: 'oai', component: OaiComponent, data: {title: 'Administración', subtitle: '/ OAI'}},
+              {path: 'reportes', component: ReportesComponent, data: {title: 'Administración', subtitle: '/ Reportes', icon: 'settings'}},
+              {path: 'usuarios', component: UsuariosComponent, data: {title: 'Administración', subtitle: '/ Usuarios', icon: 'settings'}},
+              {path: 'historicos', component: HistoricosComponent, data: {title: 'Administración', subtitle: '/ Historicos', icon: 'settings'}},
+              {path: 'oai', component: OaiComponent, data: {title: 'Administración', subtitle: '/ OAI', icon: 'settings'}},
               {
                 path: 'visor',
                 component: VisorObjetosDigitalesComponent,
-                data: {title: 'Administración', subtitle: '/ Visor de objetos digitales'}
+                data: {title: 'Administración', subtitle: '/ Visor de objetos digitales',
+                icon: 'settings'}
               },
               {
                 path: 'preservacion-digital', component: PreservacionDigitalComponent,
-                data: {title: 'Administración', subtitle: '/ Preservación digital'}
+                data: {title: 'Administración', subtitle: '/ Preservación digital', icon: 'settings'}
               },
               {path: '**', redirectTo: 'conjuntos-colecciones', pathMatch: 'full'}
             ]

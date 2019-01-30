@@ -1,6 +1,7 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout';
-import {Router} from '@angular/router';
+import {NavigationEnd, Router} from '@angular/router';
+import {every, filter} from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -8,16 +9,17 @@ import {Router} from '@angular/router';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  mybool;
 
   mobileQuery: MediaQueryList;
 
   fillerNav = [
-    {viewValue: 'Consulta', link: 'consulta'},
-    {viewValue: 'Catálogo', link: 'catalogo'},
-    {viewValue: 'Prestamos', link: 'prestamos'},
-    {viewValue: 'Investigación', link: 'investigacion'},
-    {viewValue: 'Restauración', link: 'restauracion'},
-    {viewValue: 'Administración', link: 'administracion'},
+    {viewValue: 'Consulta', link: 'consulta', icon: 'list'},
+    {viewValue: 'Catálogo', link: 'catalogo', icon: 'library_add'},
+    {viewValue: 'Prestamos', link: 'prestamos', icon: 'departure_board'},
+    {viewValue: 'Investigación', link: 'investigacion', icon: 'search'},
+    {viewValue: 'Restauración', link: 'restauracion', icon: 'autorenew'},
+    {viewValue: 'Administración', link: 'administracion', icon: 'settings'},
   ];
 
   fillerContent = Array.from({length: 50}, () =>
@@ -38,6 +40,10 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    if(this.router.url === '/inicio/bienvenida'){
+      this.mybool = false;
+    }
+    // console.log(this.router.url);
   }
 
   ngOnDestroy(): void {

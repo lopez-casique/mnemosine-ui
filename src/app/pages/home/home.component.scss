@@ -19,8 +19,10 @@
 }
 
 .mat-toolbar-row, .mat-toolbar-single-row {
-  background: #455a64;
-  color: #ffffff;
+  background: #ffffff;
+  color: #263544;
+  //color: #455a64;
+  z-index: 2;
 }
 
 h1.example-app-name {
@@ -40,25 +42,31 @@ h1.example-app-name {
 }
 
 .list-item {
-  color: #ffffff;
+  color: #b7c0cd;
+  text-align: left;
+  padding: 7px 10px 7px 20px;
+  margin: 5px 0 0;
+  border-radius: 0;
+  border-left: 3px solid transparent;
 }
 
 .list-item:hover {
-  background: #E6FAFC;
-  color: #000000;
+  //background: #E6FAFC;
+  color: #ffffff;
 }
 
-.list-item:focus {
-  background: #E6FAFC;
-  color: #000000;
-}
+//.list-item:focus {
+//  background: #E6FAFC;
+//  color: #000000;
+//}
 
 
 .side_nav {
-  background: #455a64;
+  background: #263544;
 }
 
 .main-wrapper {
+  background: #f2f7fb;
   width: 100%;;
   position: absolute;
   display: flex;
@@ -70,13 +78,12 @@ h1.example-app-name {
 }
 
 .active-list-item {
-  background: #E6FAFC;
-  color: #000000;
+  border-left-color: #42a5f5;
 }
 
-.mat-list-item {
-  -webkit-tap-highlight-color: #E6FAFC;
-}
+//.mat-list-item {
+//  -webkit-tap-highlight-color: #E6FAFC;
+//}
 
 .go-home {
   cursor: pointer;
@@ -93,3 +100,18 @@ h1.example-app-name {
   cursor: pointer;
 }
 
+.nav-list-icon {
+  font-size: 14px;
+  padding: 4px;
+  margin-right: 5px;
+  border-radius: 4px;
+  width: 30px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 30px;
+  text-align: center;
+}

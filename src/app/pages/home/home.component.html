@@ -1,12 +1,14 @@
 <div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
   <mat-toolbar class="example-toolbar">
-    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
-    <img src="assets/brand/logo_franz_mayer.png" alt="" class="brand_logo ml-3" (click)="goHome()">
+    <button mat-icon-button (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <img src="assets/brand/Franz-mayer.png" alt="" class="brand_logo ml-3" (click)="goHome()">
     <!--<a routerLink="/inicio" class="go-home">-->
-      <!--<h1 class="example-app-name">Mnemosine</h1>-->
+    <!--<h1 class="example-app-name">Mnemosine</h1>-->
     <!--</a>-->
     <span class="example-spacer"></span>
-    <button mat-icon-button [matMenuTriggerFor]="menu"  class="menu-button">
+    <button mat-icon-button [matMenuTriggerFor]="menu" class="menu-button">
       <mat-icon>more_vert</mat-icon>
     </button>
 
@@ -28,13 +30,25 @@
     <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
                  [fixedInViewport]="mobileQuery.matches" fixedTopGap="56" class="side_nav">
       <mat-nav-list>
-        <a class="list-item" mat-list-item *ngFor="let nav of fillerNav" [routerLink]="nav.link" [routerLinkActive]="['active-list-item']">{{nav.viewValue}}</a>
+        <a class="list-item" mat-list-item *ngFor="let nav of fillerNav" [routerLink]="nav.link"
+           [routerLinkActive]="['active-list-item']">
+          <span class="nav-list-icon">
+          <i class="material-icons ">
+            {{nav.icon}}
+          </i>
+          </span>
+          <span>
+          {{nav.viewValue}}
+            </span>
+        </a>
       </mat-nav-list>
     </mat-sidenav>
 
-    <mat-sidenav-content>
+    <mat-sidenav-content class="position-relative d-block">
       <div class="main-wrapper">
-        <app-breadcrumb></app-breadcrumb>
+        <div *ngIf="router.url !== '/inicio/bienvenida'">
+          <app-breadcrumb></app-breadcrumb>
+        </div>
         <router-outlet></router-outlet>
       </div>
     </mat-sidenav-content>

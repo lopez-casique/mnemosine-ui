@@ -1,10 +1,39 @@
-<div style="background: #718792;" class="pb-1">
-  <div class="col-md-8 align-self-center pt-2">
-    <h4 class="">{{ lbltitle === 'Inicio' ? 'Hola {nombre de usuario}' : lbltitle }}</h4>
-  </div>
-  <div class="col-md-12 align-self-end pb-1">
-    <ol class="breadcrumb" style="background: #718792;">
-      <li class="breadcrumb-item active" style="color: #ffffff">{{ lbltitle }} {{lblSubtitle}}</li>
-    </ol>
+<div class="page-header card">
+  <div class="row align-items-end">
+    <div class="col-lg-6">
+      <div class="page-header-title mx-5">
+        <i class="material-icons icon-alert-octagon bg-c-blue">
+          {{icon}}
+        </i>
+        <div class="d-inline">
+          <h5>{{ lbltitle === 'Inicio' ? 'Hola {nombre de usuario}' : lbltitle }}</h5>
+          <!--<span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>-->
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="page-header-breadcrumb">
+        <ul class=" breadcrumb breadcrumb-title">
+          <li class="breadcrumb-item">
+            <a routerLink="/inicio"><i class="material-icons">home</i></a>
+          </li>
+          <li class="breadcrumb-item">
+            {{ lbltitle }} {{lblSubtitle}}
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </div>
+
+
+<!--<div style="background: #718792;" class="pb-1">-->
+<!--<div class="col-md-8 align-self-center pt-2">-->
+<!--<h4 class="">{{ lbltitle === 'Inicio' ? 'Hola {nombre de usuario}' : lbltitle }}</h4>-->
+<!--</div>-->
+<!--<div class="col-md-12 align-self-end pb-1">-->
+<!--<ol class="breadcrumb" style="background: #718792;">-->
+<!--<li class="breadcrumb-item active" style="color: #ffffff">{{ lbltitle }} {{lblSubtitle}}</li>-->
+<!--</ol>-->
+<!--</div>-->
+<!--</div>-->
